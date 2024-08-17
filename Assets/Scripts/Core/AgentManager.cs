@@ -1,18 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class AgentManager : MonoBehaviour
+namespace Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public class AgentManager : MonoBehaviour, IAgentService
     {
-        
-    }
+        public event Action AddAgentEvent;
+        public event Action RemoveAgentEvent;
+        public event Action RemoveAllAgentsEvent;
+        public event Action<int> AgentsNumberChangeEvent;
+        public event Action<string> AgentSendLogEvent;
+        public void AddAgent()
+        {
+            AddAgentEvent?.Invoke();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void RemoveAgent()
+        {
+            RemoveAgentEvent?.Invoke();
+        }
+
+        public void RemoveAllAgents()
+        {
+            RemoveAllAgentsEvent?.Invoke();
+        }
+
+        public void ChangeAgentsNumber(int agentsNumber)
+        {
+            AgentsNumberChangeEvent?.Invoke(agentsNumber);
+        }
+
+        public void LogAgent(string log)
+        {
+            AgentSendLogEvent?.Invoke(log);
+        }
     }
 }

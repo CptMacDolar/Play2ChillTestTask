@@ -11,5 +11,6 @@ namespace Core
         void ChangeGameSpeed(bool increase);
         void ChangePause();
         float GetGameSpeed();
+        bool GetGamePaused();
     }
 }

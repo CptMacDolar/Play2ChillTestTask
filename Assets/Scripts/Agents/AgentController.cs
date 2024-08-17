@@ -68,7 +68,7 @@ namespace Agents
             
             var randomAgent = _agents[Random.Range(0, _agents.Count)];
             _agents.Remove(randomAgent);
-            Destroy(randomAgent.gameObject);
+            randomAgent.OnRemove();
             
             GameManager.Instance.AgentService.ChangeAgentsNumber(_agents.Count);
         }
@@ -77,7 +77,7 @@ namespace Agents
         {
             foreach (var agent in _agents)
             {
-                Destroy(agent.gameObject);
+                agent.OnRemove();
             }
             _agents.Clear();
             

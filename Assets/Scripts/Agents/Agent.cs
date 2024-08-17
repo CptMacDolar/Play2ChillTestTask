@@ -180,5 +180,13 @@ namespace Agents
             SetRandomDestination();
             _isMoving = false;
         }
+
+        public async void OnRemove()
+        {
+            gameObject.SetActive(false);
+            _currentTween?.Kill(true);
+            await Task.Delay(500);
+            Destroy(gameObject);
+        }
     }
 }

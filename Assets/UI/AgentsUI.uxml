@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Stylesheet.uss?fileID=7433441132597879392&amp;guid=c72f459c71c36ff48bc40433473b1b4f&amp;type=3#Stylesheet" />
+    <ui:VisualElement style="justify-content: flex-start; align-items: flex-start; height: 100%; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; width: 100%;">
+        <ui:VisualElement name="UI" class="background" style="left: 35%; justify-content: center; flex-direction: column-reverse; padding-right: 5px; padding-left: 5px;">
+            <ui:VisualElement name="Agents" style="flex-direction: row; justify-content: space-between; margin-top: 5px; margin-bottom: 5px; margin-right: 5px; margin-left: 5px;">
+                <ui:Button text="Add Agent" display-tooltip-when-elided="true" name="AgentAddButton" class="button" style="transform-origin: center;" />
+                <ui:Label text="Agents:" display-tooltip-when-elided="true" name="AgentsNumberLabel" class="label" />
+                <ui:Label text="0" display-tooltip-when-elided="true" name="AgentsNumberText" class="label" />
+                <ui:Button text="Remove\nRandom Agent" display-tooltip-when-elided="true" name="AgentRemoveButton" class="button" style="-unity-text-align: middle-center;" />
+                <ui:Button text="Remove\nAll Agents" display-tooltip-when-elided="true" name="AgentRemoveAllButton" class="button" style="align-items: stretch;" />
+            </ui:VisualElement>
+            <ui:Label display-tooltip-when-elided="true" name="LogText" class="label" style="white-space: normal; color: rgb(255, 255, 255); margin-top: 5px; margin-bottom: 5px; padding-right: 5px; padding-left: 5px; margin-right: 5px; margin-left: 5px; -unity-text-align: middle-center; border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; width: 100%; padding-top: 5px; padding-bottom: 5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

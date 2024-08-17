@@ -23,7 +23,7 @@ namespace UI
             _gameSpeedIncreaseButton = root.Q<Button>("GameSpeedIncreaseButton");
             _gamePauseButton = root.Q<Button>("GamePauseButton");
 
-            _gameSpeedLabel = root.Q<Label>("GameSpeedLabel");
+            _gameSpeedLabel = root.Q<Label>("GameSpeedText");
         }
 
         private void OnEnable()
@@ -59,7 +59,7 @@ namespace UI
         
         private void UpdateGameSpeedLabel(float gameSpeed)
         {
-            _gameSpeedLabel.text = gameSpeed.ToString(CultureInfo.InvariantCulture);
+            _gameSpeedLabel.text = gameSpeed.ToString(CultureInfo.InvariantCulture) + "x";
         }
     }
 }

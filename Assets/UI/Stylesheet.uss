@@ -73,4 +73,5 @@
     align-items: center;
     height: 10%;
     left: 25%;
+    overflow: hidden;
 }

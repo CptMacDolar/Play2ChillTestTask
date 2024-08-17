@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheet.uss?fileID=7433441132597879392&amp;guid=c72f459c71c36ff48bc40433473b1b4f&amp;type=3#Stylesheet" />
-    <ui:VisualElement style="justify-content: flex-start; align-items: flex-start; height: 100%; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; width: 100%;">
+    <ui:VisualElement focusable="false" picking-mode="Ignore" style="justify-content: flex-start; align-items: flex-start; height: 100%; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; width: 100%; overflow: hidden;">
         <ui:VisualElement name="UI" class="background" style="flex-direction: row; justify-content: space-around; background-color: rgb(86, 98, 246); width: auto; align-items: center; left: 58%; padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px;">
-            <ui:VisualElement name="GameSpeedGroup" style="align-items: stretch; justify-content: flex-start; width: auto;">
+            <ui:VisualElement name="GameSpeedGroup" style="align-items: stretch; justify-content: flex-start; width: auto; padding-right: 10px; padding-left: 10px;">
                 <ui:VisualElement name="GameTime" style="flex-direction: row; justify-content: flex-start; width: 100%; margin-bottom: 5px; margin-top: 5px;">
-                    <ui:Label text="Game Speed:" display-tooltip-when-elided="true" name="GameSpeedLabel" class="label" style="align-items: center; justify-content: space-around; width: 70%;" />
-                    <ui:Label text="1" display-tooltip-when-elided="true" name="GameSpeedText" class="label" style="align-items: center; justify-content: space-around; width: 20%;" />
+                    <ui:Label text="Game Speed:" display-tooltip-when-elided="true" name="GameSpeedLabel" class="label" style="align-items: center; justify-content: space-around; width: 50%;" />
+                    <ui:Label text="1x" display-tooltip-when-elided="true" name="GameSpeedText" class="label" style="align-items: center; justify-content: space-around; width: 50%; -unity-font-style: bold; padding-right: 0; padding-left: 0;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="GameSpeedButtons" style="flex-direction: row; width: 100%; align-items: flex-end; justify-content: flex-start; margin-top: 5px; margin-bottom: 5px;">
                     <ui:Button text="-" display-tooltip-when-elided="true" name="GameSpeedDecreaseButton" class="button" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px; width: 30px; height: 30px;" />

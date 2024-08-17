@@ -21,7 +21,6 @@ namespace UI
             _agentRemoveButton = root.Q<Button>("AgentRemoveButton");
             _agentRemoveAllButton = root.Q<Button>("AgentRemoveAllButton");
 
-
             _agentsNumberText = root.Q<Label>("AgentsNumberText");
             _logText = root.Q<Label>("LogText");
         }

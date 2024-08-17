@@ -1,4 +1,5 @@
 using System.Globalization;
+using Core;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -30,6 +31,7 @@ namespace UI
             _gameSpeedDecreaseButton.clicked += OnDecreaseSpeedClicked;
             _gameSpeedIncreaseButton.clicked += OnIncreaseSpeedClicked;
             _gamePauseButton.clicked += OnGamePauseClicked;
+            GameManager.Instance.TimeService.OnGameSpeedChange += UpdateGameSpeedLabel;
         }
 
         private void OnDisable()
@@ -37,26 +39,27 @@ namespace UI
             _gameSpeedDecreaseButton.clicked -= OnDecreaseSpeedClicked;
             _gameSpeedIncreaseButton.clicked -= OnIncreaseSpeedClicked;
             _gamePauseButton.clicked -= OnGamePauseClicked;
+            GameManager.Instance.TimeService.OnGameSpeedChange -= UpdateGameSpeedLabel;
+        }
+        
+        private void OnIncreaseSpeedClicked()
+        {
+            GameManager.Instance.TimeService.ChangeGameSpeed(true);
+        }
+        
+        private void OnDecreaseSpeedClicked()
+        {
+            GameManager.Instance.TimeService.ChangeGameSpeed(false);
+        }
+        
+        private void OnGamePauseClicked()
+        {
+            GameManager.Instance.TimeService.ChangePause();
         }
         
         private void UpdateGameSpeedLabel(float gameSpeed)
         {
             _gameSpeedLabel.text = gameSpeed.ToString(CultureInfo.InvariantCulture);
-        }
-        
-        private void OnIncreaseSpeedClicked()
-        {
-            
-        }
-        
-        private void OnDecreaseSpeedClicked()
-        {
-            
-        }
-        
-        private void OnGamePauseClicked()
-        {
-            
         }
     }
 }

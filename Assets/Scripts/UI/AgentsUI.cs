@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -30,6 +31,8 @@ namespace UI
             _agentAddButton.clicked += OnAddAgentClicked;
             _agentRemoveButton.clicked += OnRemoveAgentClicked;
             _agentRemoveAllButton.clicked += OnRemoveAllAgentsClicked;
+            GameManager.Instance.AgentService.AgentSendLogEvent += OnNewLog;
+            GameManager.Instance.AgentService.AgentsNumberChangeEvent += UpdateAgentsNumberLabel;
         }
 
         private void OnDisable()
@@ -37,31 +40,33 @@ namespace UI
             _agentAddButton.clicked -= OnAddAgentClicked;
             _agentRemoveButton.clicked -= OnRemoveAgentClicked;
             _agentRemoveAllButton.clicked -= OnRemoveAllAgentsClicked;
-        }
-        
-        private void UpdateAgentsNumberLabel(int agentsNumber)
-        {
-            _agentsNumberText.text = agentsNumber.ToString();
+            GameManager.Instance.AgentService.AgentSendLogEvent -= OnNewLog;
+            GameManager.Instance.AgentService.AgentsNumberChangeEvent -= UpdateAgentsNumberLabel;
         }
         
         private void OnAddAgentClicked()
         {
-           
+            GameManager.Instance.AgentService.AddAgent();
         }
         
         private void OnRemoveAgentClicked()
         {
-            
+            GameManager.Instance.AgentService.RemoveAgent();
         }
         
         private void OnRemoveAllAgentsClicked()
         {
-            
+            GameManager.Instance.AgentService.RemoveAllAgents();
         }
 
         private void OnNewLog(string log)
         {
             _logText.text = $"{log}\n";
+        }
+        
+        private void UpdateAgentsNumberLabel(int agentsNumber)
+        {
+            _agentsNumberText.text = agentsNumber.ToString();
         }
     }
 }

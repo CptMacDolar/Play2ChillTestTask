@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Stylesheet.uss?fileID=7433441132597879392&amp;guid=c72f459c71c36ff48bc40433473b1b4f&amp;type=3#Stylesheet" />
+    <ui:VisualElement style="justify-content: flex-start; align-items: center; height: 100%; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; width: 100%;">
+        <ui:VisualElement name="UI" style="margin-right: 0; margin-left: 0; flex-direction: row; justify-content: space-around; background-color: rgb(86, 98, 246); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); width: auto; margin-bottom: 1%; padding-right: 1%; padding-left: 1%; align-items: center;">
+            <ui:VisualElement name="Agents" style="flex-direction: row;">
+                <ui:Button text="Add Agent" display-tooltip-when-elided="true" name="AgentAddButton" class="button" style="transform-origin: center;" />
+                <ui:GroupBox name="AgentNumberGroup" style="justify-content: space-around; align-items: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-bottom: 0; padding-left: 0;">
+                    <ui:Label text="Agents:" display-tooltip-when-elided="true" name="AgentsNumberLabel" class="label" />
+                    <ui:Label text="0" display-tooltip-when-elided="true" name="AgentsNumberText" class="label" />
+                </ui:GroupBox>
+                <ui:Button text="Remove\nRandom Agent" display-tooltip-when-elided="true" name="AgentRemoveButton" class="button" style="-unity-text-align: middle-center;" />
+                <ui:Button text="Remove\nAll Agents" display-tooltip-when-elided="true" name="AgentRemoveAllButton" class="button" style="align-items: stretch;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Log">
+                <ui:Label display-tooltip-when-elided="true" name="LogText" class="label" style="white-space: normal; width: 236px; height: 48px; color: rgb(255, 255, 255); margin-top: 5px; margin-bottom: 5px; padding-right: 0; padding-left: 0; margin-right: 10px; margin-left: 10px; -unity-text-align: middle-center; border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="GameSpeedGroup" style="align-items: flex-start; justify-content: center;">
+                <ui:VisualElement name="GameTime" style="flex-direction: row; justify-content: flex-end;">
+                    <ui:Label text="Game Speed:" display-tooltip-when-elided="true" name="GameSpeedLabel" class="label" style="align-items: center; justify-content: space-around;" />
+                    <ui:Label text="1" display-tooltip-when-elided="true" name="GameSpeedText" class="label" style="align-items: center; justify-content: space-around;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GameSpeedButtons" style="flex-direction: row;">
+                    <ui:Button text="-" display-tooltip-when-elided="true" name="GameSpeedDecreaseButton" class="button" />
+                    <ui:Button text="Pause" display-tooltip-when-elided="true" name="GamePauseButton" class="button" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="GameSpeedIncreaseButton" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

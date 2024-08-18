@@ -20,7 +20,6 @@ namespace Agents
         private float _gameSpeed = 1f;
         
         // Flags
-        private bool _canMove;
         private bool _isMoving;
         private bool _paused;
         
@@ -56,20 +55,20 @@ namespace Agents
 
             _path = path;
             _currentWaypoint = 0;
-
-            if (!_isMoving)
-                MoveAgentAsync();
         }
         
         public void OnSpawn()
         {
             _guid = Guid.NewGuid();
-            _canMove = true;
-            
             SetRandomDestination();
         }
         
         public void OnTick()
+        {
+            CheckWaypoints();
+        }
+
+        private void CheckWaypoints()
         {
             if(_paused)
                 return;
@@ -88,7 +87,6 @@ namespace Agents
                     if (_currentWaypoint + 1 < _path.vectorPath.Count)
                     {
                         _currentWaypoint++;
-                        ResetMovement();
                     }
                     else
                     {
@@ -98,6 +96,7 @@ namespace Agents
                 }
                 else
                 {
+                    ResetMovement();
                     break;
                 }
             }
@@ -110,18 +109,6 @@ namespace Agents
 
             _destination = randomPosition;
             _seeker.StartPath(transform.position, _destination);
-        }
-        
-        private async void MoveAgentAsync()
-        {
-            while (_canMove)
-            {
-                if (!_isMoving)
-                {
-                    ResetMovement();
-                }
-                await Task.Yield();
-            }
         }
         
         public void ChangeGameSpeed(float gameSpeed)

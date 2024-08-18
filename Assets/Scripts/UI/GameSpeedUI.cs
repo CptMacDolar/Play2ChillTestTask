@@ -22,7 +22,6 @@ namespace UI
             _gameSpeedDecreaseButton = root.Q<Button>("GameSpeedDecreaseButton");
             _gameSpeedIncreaseButton = root.Q<Button>("GameSpeedIncreaseButton");
             _gamePauseButton = root.Q<Button>("GamePauseButton");
-
             _gameSpeedLabel = root.Q<Label>("GameSpeedText");
         }
 
@@ -32,6 +31,7 @@ namespace UI
             _gameSpeedIncreaseButton.clicked += OnIncreaseSpeedClicked;
             _gamePauseButton.clicked += OnGamePauseClicked;
             GameManager.Instance.TimeService.OnGameSpeedChange += UpdateGameSpeedLabel;
+            GameManager.Instance.TimeService.OnPauseChange += UpdateGameSpeedLabel;
         }
 
         private void OnDisable()
@@ -40,6 +40,7 @@ namespace UI
             _gameSpeedIncreaseButton.clicked -= OnIncreaseSpeedClicked;
             _gamePauseButton.clicked -= OnGamePauseClicked;
             GameManager.Instance.TimeService.OnGameSpeedChange -= UpdateGameSpeedLabel;
+            GameManager.Instance.TimeService.OnPauseChange -= UpdateGameSpeedLabel;
         }
         
         private void OnIncreaseSpeedClicked()
@@ -60,6 +61,14 @@ namespace UI
         private void UpdateGameSpeedLabel(float gameSpeed)
         {
             _gameSpeedLabel.text = gameSpeed.ToString(CultureInfo.InvariantCulture) + "x";
+        }
+        private void UpdateGameSpeedLabel(bool paused)
+        {
+            if (paused)
+                _gameSpeedLabel.text = "PAUSE";
+            else
+                _gameSpeedLabel.text = GameManager.Instance.TimeService.GetGameSpeed().
+                    ToString(CultureInfo.InvariantCulture) + "x";
         }
     }
 }

@@ -49,6 +49,8 @@ namespace Core
             _gameSpeed = Mathf.Clamp(_gameSpeed, minGameSpeed, maxGameSpeed);
             _tickRate = (int)(baseTickRate * _gameSpeed);
             
+            if(_isPaused)
+                ChangePause();
             OnGameSpeedChange?.Invoke(_gameSpeed);
         }
 

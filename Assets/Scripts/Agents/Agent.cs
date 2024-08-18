@@ -24,7 +24,8 @@ namespace Agents
         private bool _paused;
         
         //DOTween
-        private Tween _currentTween;
+        private Tween _currentMovementTween;
+        private Tween _currentRotationTween;
         
         // A* Path Finding
         private Seeker _seeker;
@@ -113,9 +114,6 @@ namespace Agents
         
         public void ChangeGameSpeed(float gameSpeed)
         {
-            if (_paused)
-                ChangePaused(false);
-            
             _gameSpeed = gameSpeed;
             
             if(_isMoving)
@@ -132,12 +130,14 @@ namespace Agents
             float distance = Vector3.Distance(transform.position, currentDestination);
             float duration = distance / currentSpeed;
             
-            _currentTween?.Kill();
+            _currentMovementTween?.Kill();
+            _currentRotationTween?.Kill();
             _isMoving = true;
 
-            transform.DOLookAt(currentDestination, rotationDuration / _gameSpeed);
+            _currentRotationTween = transform.DOLookAt(currentDestination, rotationDuration / _gameSpeed)
+                .SetEase(Ease.Linear);
 
-            _currentTween = transform.DOMove(currentDestination, duration)
+            _currentMovementTween = transform.DOMove(currentDestination, duration)
                 .SetEase(Ease.Linear);
         }
 
@@ -145,18 +145,21 @@ namespace Agents
         {
             _paused = paused;
             
-            if(_currentTween == null)
-                return;
-            
             if (paused)
             {
-                if(_currentTween.IsPlaying())
-                    _currentTween.Pause();
+                if(_currentMovementTween.IsActive() && _currentMovementTween.IsPlaying())
+                    _currentMovementTween.Pause();
+                
+                if(_currentRotationTween.IsActive() && _currentRotationTween.IsPlaying())
+                    _currentRotationTween.Pause();
             }
             else
             {
-                if(!_currentTween.IsPlaying())
-                    _currentTween.Play();
+                if(_currentMovementTween.IsActive() && !_currentMovementTween.IsPlaying())
+                    _currentMovementTween.Play();
+                
+                if(_currentRotationTween.IsActive() && !_currentRotationTween.IsPlaying())
+                    _currentRotationTween.Play();
             }
         }
         
@@ -171,7 +174,8 @@ namespace Agents
         public async void OnRemove()
         {
             gameObject.SetActive(false);
-            _currentTween?.Kill(true);
+            _currentMovementTween?.Kill(true);
+            _currentRotationTween?.Kill(true);
             await Task.Delay(500);
             Destroy(gameObject);
         }

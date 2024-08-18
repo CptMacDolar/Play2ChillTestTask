@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0, z: 0}
+  defaultPoolSize: 10
+  maxPoolSize: 20
   agentPrefab: {fileID: 392155070053309007, guid: 3cdda81bb455c674f9d2de6242409e5b,
     type: 3}
 --- !u!4 &252742773

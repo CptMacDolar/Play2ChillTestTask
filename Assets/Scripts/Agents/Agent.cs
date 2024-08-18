@@ -37,10 +37,13 @@ namespace Agents
         private void Awake()
         {
             _seeker = GetComponent<Seeker>();
-            _seeker.pathCallback += OnPathComplete;
-
         }
-        
+
+        private void OnEnable()
+        {
+            _seeker.pathCallback += OnPathComplete;
+        }
+
         public void OnDisable ()
         {
             _seeker.pathCallback -= OnPathComplete;
@@ -61,6 +64,9 @@ namespace Agents
         public void OnSpawn()
         {
             _guid = Guid.NewGuid();
+            _path = null;
+            _isMoving = false;
+            
             SetRandomDestination();
         }
         

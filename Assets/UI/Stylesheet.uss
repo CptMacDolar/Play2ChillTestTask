@@ -1,3 +1,9 @@
+:root, *{
+    --themeColor: #5561f4;
+    --fadedThemeColor: #aab0f9;
+    --shadowedThemeColor: #292f75;
+}
+
 .button {
     background-color: rgb(216, 218, 251);
     color: rgb(0, 0, 0);
@@ -19,13 +25,23 @@
     font-size: 12px;
 }
 
+Button:hover
+{
+    scale:1.1;
+}
+
+Button:active
+{
+    background-color: var(--fadedThemeColor);
+}
+
 .label {
     background-color: rgb(0, 0, 0);
-    color: rgb(171, 177, 251);
-    border-left-color: rgb(41, 47, 118);
-    border-right-color: rgb(41, 47, 118);
-    border-top-color: rgb(41, 47, 118);
-    border-bottom-color: rgb(41, 47, 118);
+    color: var(--fadedThemeColor);
+    border-left-color: var(--shadowedThemeColor);
+    border-right-color: var(--shadowedThemeColor);
+    border-top-color: var(--shadowedThemeColor);
+    border-bottom-color: var(--shadowedThemeColor);
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -53,7 +69,7 @@
     margin-left: 0;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgb(86, 98, 246);
+    background-color: var(--themeColor);
     border-top-width: 5px;
     border-right-width: 5px;
     border-bottom-width: 5px;
